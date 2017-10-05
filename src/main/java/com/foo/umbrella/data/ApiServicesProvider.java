@@ -80,7 +80,12 @@ public final class ApiServicesProvider implements ApiServices {
   }
 
   @Override
-  public void getData(Application app) {
+  public void initData(Application app) {
     new ApiServicesProvider(app);
+  }
+
+  @Override
+  public WeatherService getdata() {
+    return getWeatherService();
   }
 }
