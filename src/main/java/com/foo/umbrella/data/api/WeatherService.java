@@ -17,7 +17,7 @@ public interface WeatherService {
      * Get the forecast for a given zip code using {@link Call}
      */
     //@GET("/api/" + BuildConfig.API_KEY + "/conditions/hourly/q/{zip}.json")
-   // Call<WeatherData> forecastForZipCallable(@Path("zip") String zipCode);
+    // Call<WeatherData> forecastForZipCallable(@Path("zip") String zipCode);
 
     @GET("/api/API_KEY/conditions/hourly/q/{zip}.json")
     Call<WeatherData> forecastForZipCallable(@Path("zip") String zipCode);
