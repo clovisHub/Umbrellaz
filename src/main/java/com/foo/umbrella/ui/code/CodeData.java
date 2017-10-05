@@ -1,5 +1,8 @@
 package com.foo.umbrella.ui.code;
 
+import android.util.Log;
+
+import com.foo.umbrella.applevel.UmbrellaApp;
 import com.foo.umbrella.data.ApiServices;
 import com.foo.umbrella.data.api.WeatherService;
 import com.foo.umbrella.data.model.WeatherData;
@@ -16,9 +19,21 @@ public class CodeData implements CodeContract.Data{
 
     CodeContract.Presenter cdPresenter;
     WeatherService weatherService;
-    ApiServices apiServices;
+    static  ApiServices apiServices;
+
+    public static final String TAG ="CodeData";
+
+    private static  CodeData codeData = null;
 
     private CodeData (){}
+
+    public static CodeData getCodeData(){
+        if(codeData == null){
+            codeData = new CodeData();
+            apiServices = UmbrellaApp.getServices();
+        }
+        return codeData;
+    }
 
 
     @Override
@@ -34,6 +49,14 @@ public class CodeData implements CodeContract.Data{
         weatherService.forecastForZipCallable(code).enqueue(new Callback<WeatherData>() {
             @Override
             public void onResponse(Call<WeatherData> call, Response<WeatherData> response) {
+
+                if(response.isSuccessful()) {
+
+                    Log.d(TAG, "posts loaded from API");
+                }else {
+                    int statusCode  = response.code();
+                    // handle request errors depending on status code
+                }
 
             }
 

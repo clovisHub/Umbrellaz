@@ -11,6 +11,7 @@ public class CodePresenter implements CodeContract.Presenter{
 
     public CodePresenter(CodeContract.View codeView){
         caView = codeView;
+        cdData = CodeData.getCodeData();
     }
 
     @Override
