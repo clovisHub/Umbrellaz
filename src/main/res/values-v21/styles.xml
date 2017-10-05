@@ -1,9 +1,6 @@
-<resources xmlns:tools="http://schemas.android.com/tools">
-
-    <style name="None">
-    </style>
-
-    <style name="Theme.Umbrella" parent="Theme.AppCompat.Light">
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="Theme.Umbrella" parent="android:Theme.Material.Light" >
         <item name="android:textColorPrimary">@color/text_color_primary</item>
         <item name="android:textColorSecondary">@color/text_color_secondary</item>
 
@@ -13,8 +10,5 @@
 
         <item name="colorAccent">@color/accent</item>
         <item name="colorPrimary">@color/accent</item>
-        <item name="android:statusBarColor" tools:ignore="NewApi">@color/status_bar</item>
-        <item name="android:windowDrawsSystemBarBackgrounds" tools:ignore="NewApi">true</item>
     </style>
-
 </resources>
