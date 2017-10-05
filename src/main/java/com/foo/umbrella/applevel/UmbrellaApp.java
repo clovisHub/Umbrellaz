@@ -12,7 +12,7 @@ public class UmbrellaApp extends Application {
   @Override public void onCreate() {
     super.onCreate();
     AndroidThreeTen.init(this);
-    //apiServices.getData(this);
+    apiServices.getData(this);
 
   }
 

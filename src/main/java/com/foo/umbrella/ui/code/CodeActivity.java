@@ -6,9 +6,10 @@ import android.os.Bundle;
 import android.widget.TextView;
 
 import com.foo.umbrella.R;
+import com.foo.umbrella.data.model.WeatherData;
 
 
-public class CodeActivity extends AppCompatActivity {
+public class CodeActivity extends AppCompatActivity implements CodeContract.View{
     Intent secondIntent;
     String city;
 
@@ -22,6 +23,11 @@ public class CodeActivity extends AppCompatActivity {
 
         secView = (TextView) findViewById(R.id.sec_tvId);
         secView.setText(city);
+
+    }
+
+    @Override
+    public void loadData(WeatherData response) {
 
     }
 }
