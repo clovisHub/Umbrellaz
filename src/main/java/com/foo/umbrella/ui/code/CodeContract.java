@@ -7,18 +7,21 @@ import com.foo.umbrella.data.model.WeatherData;
 public interface CodeContract {
 
     interface Presenter{
-        void getCity(String city); // called in CodeActivity
 
-        WeatherData getResponse();
+        void setZipCode(String city); // called from CodeActivity
+
+        void getResponse(WeatherData data); // called from CodeData
 
     }
+
     interface View{
-        void loadData(WeatherData response); // called in CodePresenter
+
+        void loadData(WeatherData response); // called from CodePresenter
     }
 
     interface Data {
 
-        WeatherService loadResponse();
+        WeatherService loadResponse(); // called from CodeData,
 
         void setCity(String code);
     }

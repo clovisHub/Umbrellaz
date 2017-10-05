@@ -8,7 +8,7 @@ import com.jakewharton.threetenabp.AndroidThreeTen;
 
 public class UmbrellaApp extends Application {
 
-  static ApiServices apiServices;
+  private static ApiServices apiServices;
 
   @Override public void onCreate() {
     super.onCreate();

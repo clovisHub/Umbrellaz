@@ -38,11 +38,13 @@ public class CodeData implements CodeContract.Data{
 
     @Override
     public WeatherService loadResponse() {
-        return apiServices.getdata();
+        return apiServices.getData();
     }
 
     @Override
     public void setCity(String code) {
+
+        cdPresenter = CodePresenter.getPresenter();
 
         weatherService = loadResponse();
 
@@ -52,11 +54,20 @@ public class CodeData implements CodeContract.Data{
 
                 if(response.isSuccessful()) {
 
-                    System.out.println("you got it ");
-                    Log.d(TAG, "posts loaded from API");
+                        if(response.body() instanceof WeatherData && cdPresenter != null){
+
+                            System.out.println("you got it ");
+                            cdPresenter.getResponse(response.body());
+
+                        }
+                       // System.out.println("you got it ");
+                       // Log.d(TAG, "posts loaded from API");
+                       // cdPresenter.getResponse(response.body());
+
                 }else {
                     int statusCode  = response.code();
                     // handle request errors depending on status code
+
                 }
 
             }

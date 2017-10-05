@@ -7,5 +7,5 @@ import com.foo.umbrella.data.api.WeatherService;
 public interface ApiServices {
 
    void initData(Application app);
-   WeatherService getdata();
+   WeatherService getData();
 }

@@ -85,7 +85,7 @@ public final class ApiServicesProvider implements ApiServices {
   }
 
   @Override
-  public WeatherService getdata() {
+  public WeatherService getData() {
     return getWeatherService();
   }
 }
