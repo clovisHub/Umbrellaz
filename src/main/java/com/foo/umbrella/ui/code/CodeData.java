@@ -52,6 +52,7 @@ public class CodeData implements CodeContract.Data{
 
                 if(response.isSuccessful()) {
 
+                    System.out.println("you got it ");
                     Log.d(TAG, "posts loaded from API");
                 }else {
                     int statusCode  = response.code();
