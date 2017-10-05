@@ -19,7 +19,7 @@ import static com.jakewharton.byteunits.DecimalByteUnit.MEGABYTES;
  * Provides {@link Picasso} and {@link WeatherService}
  * that are all ready setup and ready to use.
  */
-public final class ApiServicesProvider {
+public final class ApiServicesProvider implements ApiServices {
 
   private static final int DISK_CACHE_SIZE = (int) MEGABYTES.toBytes(50);
 
@@ -77,5 +77,10 @@ public final class ApiServicesProvider {
         .add(new ForecastConditionAdapter())
         .add(MoshiAdapterFactory.create())
         .build();
+  }
+
+  @Override
+  public void getData(Application app) {
+    new ApiServicesProvider(app);
   }
 }
