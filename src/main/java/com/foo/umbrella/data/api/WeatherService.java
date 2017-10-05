@@ -16,11 +16,11 @@ public interface WeatherService {
     /**
      * Get the forecast for a given zip code using {@link Call}
      */
-    //@GET("/api/" + BuildConfig.API_KEY + "/conditions/hourly/q/{zip}.json")
-    // Call<WeatherData> forecastForZipCallable(@Path("zip") String zipCode);
+     @GET("/api/" + BuildConfig.API_KEY + "/conditions/hourly/q/{zip}.json")
+     Call<WeatherData> forecastForZipCallable(@Path("zip") String zipCode);
 
-    @GET("/api/2b305c6aada251ab/conditions/hourly/q/{zip}.json")
-    Call<WeatherData> forecastForZipCallable(@Path("zip") String zipCode);
+   // @GET("/api/2b305c6aada251ab/conditions/hourly/q/{zip}.json")
+   // Call<WeatherData> forecastForZipCallable(@Path("zip") String zipCode);
 
     /**
      * Get the forecast for a given zip code using {@link Observable}
