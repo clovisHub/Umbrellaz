@@ -3,7 +3,7 @@
     xmlns:umbrella="http://schemas.android.com/apk/res-auto">
     <item
         android:id="@+id/settingsId"
-        android:title="settings"
+        android:title="@string/settings"
         android:icon="@drawable/ic_action_settings"
         umbrella:showAsAction="ifRoom"/>
 

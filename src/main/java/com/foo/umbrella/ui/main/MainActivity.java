@@ -18,15 +18,14 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
   EditText editText;
   TextView textView;
   Button button;
-  Toolbar toolbar;
+
 
 
   @Override protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
     setContentView(R.layout.activity_main);
 
-    toolbar = (Toolbar) findViewById(R.id.app_barId);
-    setSupportActionBar(toolbar);
+
 
     editText = (EditText) findViewById(R.id.ed_id);
     textView = (TextView) findViewById(R.id.tv_id);
