@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:gravity="center"
+    android:layout_gravity="center"
+    android:padding="5dp">
+
+
+    <TextView
+        android:id="@+id/dialSt_tv"
+        android:layout_width="match_parent"
+        android:textSize="25dp"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:fontFamily="sans-serif"
+        android:text="@string/your_info" />
+
+    <EditText
+        android:id="@+id/dialSt_edtId"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:gravity="center"
+        android:layout_margin="10dp"
+        android:hint="@string/zipcode"
+         />
+
+    <RadioButton
+        android:id="@+id/dialSt_celsiusId"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/in_celsius"
+        android:layout_margin="5dp"/>
+
+    <RadioButton
+        android:id="@+id/dialSt_FarId"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/in_farenheit"
+        android:layout_marginLeft="5dp"
+        android:layout_marginBottom="10dp"/>
+
+    <Button
+        android:id="@+id/dialSt_BtnId"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/click_here" />
+</LinearLayout>

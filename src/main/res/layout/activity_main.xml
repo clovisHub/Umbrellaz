@@ -14,7 +14,14 @@
     <EditText
         android:id="@+id/ed_id"
         android:layout_width="match_parent"
+        android:hint="Zip"
         android:layout_height="wrap_content" />
+    <EditText
+        android:id="@+id/ed_id2"
+        android:hint="degree"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
     <Button
         android:id="@+id/btn_id"
         android:layout_width="match_parent"

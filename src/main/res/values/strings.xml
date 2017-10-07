@@ -1,4 +1,9 @@
 <resources>
     <string name="app_name">Umbrella</string>
     <string name="settings">settings</string>
+    <string name="zipcode">ZipCode</string>
+    <string name="in_farenheit">In Farenheit</string>
+    <string name="in_celsius">In Celsius</string>
+    <string name="click_here">Click Here</string>
+    <string name="your_info">Enter info</string>
 </resources>

@@ -1,6 +1,7 @@
 package com.foo.umbrella.ui.code;
 
 import android.content.Intent;
+import android.os.PersistableBundle;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
@@ -29,6 +30,8 @@ public class CodeActivity extends AppCompatActivity implements CodeContract.View
     //String zip = "75243";
     String zip = "";
 
+    public static final String TAG = CodeActivity.class.getName().concat("_TAG");
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
@@ -54,6 +57,16 @@ public class CodeActivity extends AppCompatActivity implements CodeContract.View
         }
 
 
+    }
+
+    @Override
+    public void onSaveInstanceState(Bundle outState, PersistableBundle outPersistentState) {
+        super.onSaveInstanceState(outState, outPersistentState);
+    }
+
+    @Override
+    protected void onRestoreInstanceState(Bundle savedInstanceState) {
+        super.onRestoreInstanceState(savedInstanceState);
     }
 
     @Override
