@@ -16,7 +16,7 @@
         android:id="@+id/sec_tvId"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/app_barId"
+        android:layout_below="@id/app_barId"
         android:layout_alignParentStart="true"
         android:layout_marginTop="23dp" />
 

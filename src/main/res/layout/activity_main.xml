@@ -6,6 +6,10 @@
     android:layout_height="match_parent"
     >
 
+    <include
+        android:id="@+id/app_bar_setId"
+        layout="@layout/app_bar_setting"
+        />
 
     <EditText
         android:id="@+id/ed_id"
@@ -20,4 +24,5 @@
         android:id="@+id/tv_id"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
+
 </LinearLayout>

@@ -9,5 +9,4 @@
     android:minHeight="150dp"
     tools:ignore="UnusedAttribute">
 
-
 </android.support.v7.widget.Toolbar>

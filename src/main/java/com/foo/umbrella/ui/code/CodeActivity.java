@@ -13,6 +13,7 @@ import android.widget.Toast;
 
 import com.foo.umbrella.R;
 import com.foo.umbrella.data.model.WeatherData;
+import com.foo.umbrella.ui.main.MainActivity;
 
 
 public class CodeActivity extends AppCompatActivity implements CodeContract.View{
@@ -38,16 +39,14 @@ public class CodeActivity extends AppCompatActivity implements CodeContract.View
         toolbar = (Toolbar) findViewById(R.id.app_barId);
         setSupportActionBar(toolbar);
 
+
         zip = getIntent().getStringExtra("zip").trim();
 
         if(zip.length() == 5){
 
-            //if(zip.matches("^[0-9]*$")){
-
-                secView.setText(zip);
-                presenter = new CodePresenter(this);
-                presenter.setZipCode(zip);
-           // }
+            secView.setText(zip);
+            presenter = new CodePresenter(this);
+            presenter.setZipCode(zip);
 
         }
         else{
@@ -71,8 +70,10 @@ public class CodeActivity extends AppCompatActivity implements CodeContract.View
         int itemResId = item.getItemId();
 
         if(itemResId == R.id.settingsId){
-          //TODO add fragment that sets changes on Units and ZipCode
-            // set a new layout,
+
+            Intent goToMain = new Intent(this, MainActivity.class);
+            goToMain.putExtra("toolbar","create");
+            startActivity(goToMain);
         }
         return super.onOptionsItemSelected(item);
 
@@ -87,7 +88,8 @@ public class CodeActivity extends AppCompatActivity implements CodeContract.View
         toolbar.setTitle(response.getCurrentObservation().getDisplayLocation().getFullName().toString());
 
         toolbar.setSubtitle(Integer.toString((int)(Double.parseDouble(response.getCurrentObservation().getTempFahrenheit())))
-                            +"\u00b0"+"C");
+                            +"\u00b0"+"F");
+
 
         if(Double.parseDouble(response.getCurrentObservation().getTempFahrenheit().toString()) > 60){
             toolbar.setBackgroundColor(getResources().getColor(R.color.weather_warm));
@@ -95,7 +97,6 @@ public class CodeActivity extends AppCompatActivity implements CodeContract.View
         else{
             toolbar.setBackgroundColor(getResources().getColor(R.color.weather_cool));
         }
-
 
 
         secView.setText(response.getCurrentObservation().getTempCelsius().toString()+ "\u00b0"+"C"
