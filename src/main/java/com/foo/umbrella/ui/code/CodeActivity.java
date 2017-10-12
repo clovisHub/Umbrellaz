@@ -22,6 +22,7 @@ public class CodeActivity extends AppCompatActivity implements CodeContract.View
 
     //String zip = "75243";
     String zip = "";
+    String degree ="";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,6 +32,7 @@ public class CodeActivity extends AppCompatActivity implements CodeContract.View
         secView = (TextView) findViewById(R.id.sec_tvId);
 
         zip = getIntent().getStringExtra("zip").trim();
+        degree = getIntent().getStringExtra("degree").trim();
 
         if(zip.length() == 5){
 
@@ -54,8 +56,12 @@ public class CodeActivity extends AppCompatActivity implements CodeContract.View
 
         //TODO display data as shown in design and take care of rotation
         // Display result view textView to see how it works
+        if(degree.equalsIgnoreCase("Fahrenheit")){
+            secView.setText(response.getCurrentObservation().getTempCelsius().toString()+" Fahrenheit");
+        }
+        else{
+            secView.setText(response.getCurrentObservation().getTempCelsius().toString()+" Celsuis");
+        }
 
-        secView.setText(response.getCurrentObservation().getTempCelsius().toString()+" Celsuis"
-        +"\n and "+response.getCurrentObservation().getTempFahrenheit().toString()+" Fahrenheit");
     }
 }
