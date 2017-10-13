@@ -66,7 +66,7 @@ public class CodeData implements CodeContract.Data{
 
                 }else {
                     int statusCode  = response.code();
-                    // handle request errors depending on status code
+                    //TODO handle request errors depending on status code
 
                 }
 

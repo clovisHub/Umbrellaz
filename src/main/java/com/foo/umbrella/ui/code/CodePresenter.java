@@ -19,10 +19,13 @@ public class CodePresenter implements CodeContract.Presenter{
             cdData = CodeData.getCodeData();
             presObj = this;
         }
+        else{
+            //TODO Throw an exception.
+        }
 
     }
 
-    public static CodeContract.Presenter getPresenter(){
+    public static CodeContract.Presenter getPresenter(){ //Method called from CodeData
         return presObj;
     }
 
