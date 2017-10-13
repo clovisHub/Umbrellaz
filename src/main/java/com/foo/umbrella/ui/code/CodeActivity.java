@@ -57,6 +57,7 @@ public class CodeActivity extends AppCompatActivity implements CodeContract.View
         //TODO display data as shown in design and take care of rotation
         // Display result view textView to see how it works
         if(degree.equalsIgnoreCase("Fahrenheit")){
+
             secView.setText(response.getCurrentObservation().getTempCelsius().toString()+" Fahrenheit");
         }
         else{
