@@ -58,7 +58,6 @@ public class CodeActivity extends AppCompatActivity implements CodeContract.View
             Toast.makeText(this,"Enter five digits", Toast.LENGTH_LONG).show();
         }
 
-
     }
 
     @Override
@@ -118,6 +117,10 @@ public class CodeActivity extends AppCompatActivity implements CodeContract.View
 
 
         if(Double.parseDouble(response.getCurrentObservation().getTempFahrenheit().toString()) > 60){
+            toolbar.setBackgroundColor(getResources().getColor(R.color.weather_warm));
+        }
+        else if(Double.parseDouble(response.getCurrentObservation().getTempCelsius().toString()) > 16){
+            // 60 * F = 15.5 * C
             toolbar.setBackgroundColor(getResources().getColor(R.color.weather_warm));
         }
         else{
