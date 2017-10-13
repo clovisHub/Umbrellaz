@@ -19,6 +19,7 @@ public class MainDegreeAdapter extends DialogFragment {
     MainLinker mainLinker = null;
 
 
+
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState) {
 

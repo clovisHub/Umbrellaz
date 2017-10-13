@@ -5,35 +5,14 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     >
-<<<<<<< HEAD
-
-=======
-
     <include
         android:id="@+id/app_bar_setId"
         layout="@layout/app_bar_setting"
         />
-
-    <EditText
-        android:id="@+id/ed_id"
-        android:layout_width="match_parent"
-        android:hint="Zip"
-        android:layout_height="wrap_content" />
-    <EditText
-        android:id="@+id/ed_id2"
-        android:hint="degree"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
-
-    <Button
-        android:id="@+id/btn_id"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
 
     <TextView
         android:id="@+id/tv_id"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
 
->>>>>>> e822345953bb695dac74acc413704fe75a855e41
 </LinearLayout>

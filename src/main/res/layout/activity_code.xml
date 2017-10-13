@@ -17,12 +17,6 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/app_barId"
-<<<<<<< HEAD
-        android:layout_alignParentStart="true" />
-=======
-        android:layout_alignParentStart="true"
         android:layout_marginTop="23dp" />
->>>>>>> e822345953bb695dac74acc413704fe75a855e41
-
 
 </RelativeLayout>

@@ -98,23 +98,23 @@ public class CodeActivity extends AppCompatActivity implements CodeContract.View
     public void loadData(WeatherData response) {
 
         //TODO display data as shown in design and take care of rotation
-<<<<<<< HEAD
         // Display result view textView to see how it works
-        if(degree.equalsIgnoreCase("Fahrenheit")){
-
-            secView.setText(response.getCurrentObservation().getTempCelsius().toString()+" Fahrenheit");
-        }
-        else{
-            secView.setText(response.getCurrentObservation().getTempCelsius().toString()+" Celsuis");
-        }
-
-=======
         // Display result via textView to see how it works
 
         toolbar.setTitle(response.getCurrentObservation().getDisplayLocation().getFullName().toString());
 
-        toolbar.setSubtitle(Integer.toString((int)(Double.parseDouble(response.getCurrentObservation().getTempFahrenheit())))
-                            +"\u00b0"+"F");
+        if(degree.equalsIgnoreCase("Fahrenheit")){
+
+            toolbar.setSubtitle(Integer.toString((int)(Double.parseDouble(response.getCurrentObservation().getTempFahrenheit())))
+                    +"\u00b0"+"F");
+
+            secView.setText(response.getCurrentObservation().getTempFahrenheit().toString()+"\u00b0"+"F");
+        }
+        else{
+            toolbar.setSubtitle(Integer.toString((int)(Double.parseDouble(response.getCurrentObservation().getTempCelsius())))
+                    +"\u00b0"+"C");
+            secView.setText(response.getCurrentObservation().getTempCelsius().toString()+"\u00b0"+"C");
+        }
 
 
         if(Double.parseDouble(response.getCurrentObservation().getTempFahrenheit().toString()) > 60){
@@ -124,14 +124,5 @@ public class CodeActivity extends AppCompatActivity implements CodeContract.View
             toolbar.setBackgroundColor(getResources().getColor(R.color.weather_cool));
         }
 
-
-        secView.setText(response.getCurrentObservation().getTempCelsius().toString()+ "\u00b0"+"C"
-                +"\n and "+response.getCurrentObservation().getTempFahrenheit().toString()+" Fahrenheit"
-                +"\n and "+response.getCurrentObservation().getIconName().toString()+" icon name"
-                +"\n and "+response.getCurrentObservation().getDisplayLocation().getCountry().toString()+" Country"
-                +"\n and "+response.getCurrentObservation().getDisplayLocation().getStateName().toString()+" State"
-                +"\n and "+response.getCurrentObservation().getDisplayLocation().getZip().toString()+" Zipcode"
-        );
->>>>>>> e822345953bb695dac74acc413704fe75a855e41
     }
 }

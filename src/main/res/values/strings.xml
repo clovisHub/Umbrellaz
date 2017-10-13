@@ -1,6 +1,5 @@
 <resources>
     <string name="app_name">Umbrella</string>
-<<<<<<< HEAD
     <string name="temp">Temperature</string>
     <string name="zip_code">Enter ZipCode</string>
     <string name="select_unit">Select unit</string>
@@ -11,12 +10,7 @@
         <item>Fahrenheit</item>
         <item>Celsius</item>
     </string-array>
-=======
     <string name="settings">settings</string>
-    <string name="zipcode">ZipCode</string>
-    <string name="in_farenheit">In Farenheit</string>
-    <string name="in_celsius">In Celsius</string>
     <string name="click_here">Click Here</string>
-    <string name="your_info">Enter info</string>
->>>>>>> e822345953bb695dac74acc413704fe75a855e41
+
 </resources>
