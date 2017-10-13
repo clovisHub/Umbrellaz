@@ -2,20 +2,11 @@ package com.foo.umbrella.ui.main;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
-import android.view.Menu;
-import android.view.MenuInflater;
-import android.view.MenuItem;
-import android.view.View;
-import android.widget.Button;
-import android.widget.EditText;
-import android.widget.RadioButton;
-import android.widget.TextView;
 import android.widget.Toast;
 import com.foo.umbrella.R;
 import com.foo.umbrella.ui.code.CodeActivity;
+import com.foo.umbrella.ui.settings.SettingsActivity;
 
 
 public class MainActivity extends AppCompatActivity implements MainLinker {
@@ -24,18 +15,8 @@ public class MainActivity extends AppCompatActivity implements MainLinker {
   String zipCode ="";
   MainZipCodeAdapter mainZipCodeAdapter;
 
-    Toolbar toolbarSet;
-    String checkerFromCode;
 
     public static final String TAG = MainActivity.class.getName().concat("_TAG");
-
-    //DialogStarted
-    TextView dialStartTv;
-    EditText dialStartEdt;
-    RadioButton dialFarBtn, dialCelsBtn;
-    Button dialClickBtn;
-    AlertDialog.Builder dialogStartedBuilder;
-    View dialogStarView;
 
   @Override protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
@@ -46,7 +27,22 @@ public class MainActivity extends AppCompatActivity implements MainLinker {
 
   }
 
+    @Override
+    protected void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+        outState.putString("zipcode",zipCode);
+    }
 
+    @Override
+    protected void onResume() {
+        super.onResume();
+
+        if(!zipCode.equals("")){
+            Intent intent = new Intent(this, SettingsActivity.class);
+            startActivity(intent);
+        }
+
+    }
 
     @Override
     public void setZipValue(String value) {
@@ -67,12 +63,18 @@ public class MainActivity extends AppCompatActivity implements MainLinker {
                  state = true;
              }
 
-        goToCodeAcivity();
+        goToCodeAcivity(state);
     }
 
-    public void goToCodeAcivity(){
+    public void goToCodeAcivity(boolean stat){
 
-         String degree ="";
+        String degree ="";
+
+         if(stat==true){
+             degree = "fahrenheit";
+         }else{
+             degree = "celsius";
+         }
 
         if(!zipCode.isEmpty()||zipCode != null ){
 
@@ -86,24 +88,6 @@ public class MainActivity extends AppCompatActivity implements MainLinker {
         }
     }
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-
-        MenuInflater menuInflater = getMenuInflater();
-        menuInflater.inflate(R.menu.menu_setting,menu);
-
-        return true;
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        int itemResId = item.getItemId();
-
-        if(itemResId == R.id.arrow_SubmitId){
-            // set a new layout,
-        }
-        return super.onOptionsItemSelected(item);
-    }
 
 }
 

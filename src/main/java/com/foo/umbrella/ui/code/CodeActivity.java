@@ -8,23 +8,19 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
-import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.foo.umbrella.R;
 import com.foo.umbrella.data.model.WeatherData;
-import com.foo.umbrella.ui.main.MainActivity;
+import com.foo.umbrella.ui.settings.SettingsActivity;
 
 
 public class CodeActivity extends AppCompatActivity implements CodeContract.View{
-    Intent secondIntent;
-    String city;
 
     CodeContract.Presenter presenter;
 
     TextView secView;
-    Button button;
     Toolbar toolbar;
 
     //String zip = "75243";
@@ -85,7 +81,7 @@ public class CodeActivity extends AppCompatActivity implements CodeContract.View
 
         if(itemResId == R.id.settingsId){
 
-            Intent goToMain = new Intent(this, MainActivity.class);
+            Intent goToMain = new Intent(this, SettingsActivity.class);
             goToMain.putExtra("toolbar","create");
             startActivity(goToMain);
         }
