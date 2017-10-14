@@ -1,4 +1,4 @@
-package com.foo.umbrella.ui.main;
+package com.foo.umbrella.ui;
 
 import android.app.Dialog;
 import android.app.DialogFragment;
@@ -8,11 +8,10 @@ import android.support.v7.app.AlertDialog;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.EditText;
-import com.foo.umbrella.R;
-import com.foo.umbrella.ui.TempAdapter;
-import com.foo.umbrella.ui.Linker;
 
-public class MainZipCodeAdapter extends  DialogFragment{
+import com.foo.umbrella.R;
+
+public class ZipCodeAdapter extends DialogFragment{
 
     private EditText zipCode;
     LayoutInflater inflater;
@@ -24,16 +23,16 @@ public class MainZipCodeAdapter extends  DialogFragment{
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState) {
 
-          activityLinker = (Linker) getActivity();
+        activityLinker = (Linker) getActivity();
 
-          return zipCodeDialog();
+        return zipCodeDialog();
     }
 
 
     private AlertDialog zipCodeDialog(){
 
         inflater = getActivity().getLayoutInflater();
-        View  zipView = inflater.inflate(R.layout.zip_text,null);
+        View zipView = inflater.inflate(R.layout.zip_text,null);
 
         AlertDialog.Builder alertDialZip = new AlertDialog.Builder(getActivity());
 
@@ -48,10 +47,6 @@ public class MainZipCodeAdapter extends  DialogFragment{
                         zipCodeValue = zipCode.getText().toString();
 
                         activityLinker.setZipValue(zipCodeValue);
-
-                        mainDegreeAdapter = new TempAdapter();
-                        mainDegreeAdapter.show(getFragmentManager(),"degreeDialog");
-
                     }
                 });
 
@@ -62,10 +57,4 @@ public class MainZipCodeAdapter extends  DialogFragment{
         return zipCodeValue;
     }
 
-
-
-
-
 }
-
-

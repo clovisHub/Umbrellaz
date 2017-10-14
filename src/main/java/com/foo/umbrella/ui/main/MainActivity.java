@@ -5,11 +5,12 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.widget.Toast;
 import com.foo.umbrella.R;
+import com.foo.umbrella.ui.Linker;
 import com.foo.umbrella.ui.code.CodeActivity;
 import com.foo.umbrella.ui.settings.SettingsActivity;
 
 
-public class MainActivity extends AppCompatActivity implements MainLinker {
+public class MainActivity extends AppCompatActivity implements Linker {
 
   boolean state;
   String zipCode ="";
@@ -36,8 +37,8 @@ public class MainActivity extends AppCompatActivity implements MainLinker {
     @Override
     protected void onResume() {
         super.onResume();
+        if(!(zipCode.equals("")||zipCode == null)){
 
-        if(!zipCode.equals("")){
             Intent intent = new Intent(this, SettingsActivity.class);
             startActivity(intent);
         }
@@ -50,10 +51,6 @@ public class MainActivity extends AppCompatActivity implements MainLinker {
 
     }
 
-    @Override
-    public String getTheValue() {
-        return null;
-    }
 
     @Override
     public void setOptionTemp(String temp) {

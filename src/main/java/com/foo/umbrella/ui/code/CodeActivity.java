@@ -81,9 +81,11 @@ public class CodeActivity extends AppCompatActivity implements CodeContract.View
 
         if(itemResId == R.id.settingsId){
 
-            Intent goToMain = new Intent(this, SettingsActivity.class);
-            goToMain.putExtra("toolbar","create");
-            startActivity(goToMain);
+            Intent goToSettings = new Intent(this, SettingsActivity.class);
+            goToSettings.putExtra("toolbar","create");
+            goToSettings.putExtra("degree",degree);
+            goToSettings.putExtra("zip",zip);
+            startActivity(goToSettings);
         }
         return super.onOptionsItemSelected(item);
 
