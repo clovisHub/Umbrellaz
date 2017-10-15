@@ -13,12 +13,7 @@ import com.foo.umbrella.R;
 
 public class TempAdapter extends DialogFragment {
 
-    private EditText zipCode;
-    LayoutInflater inflater;
-    String degreeValue = "";
     Linker mainLinker = null;
-
-
 
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState) {

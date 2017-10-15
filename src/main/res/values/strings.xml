@@ -12,5 +12,6 @@
     </string-array>
     <string name="settings">settings</string>
     <string name="click_here">Click Here</string>
+    <string name="fog">fog</string>
 
 </resources>

@@ -15,11 +15,8 @@ import com.foo.umbrella.ui.Linker;
 public class MainZipCodeAdapter extends  DialogFragment{
 
     private EditText zipCode;
-    LayoutInflater inflater;
     String zipCodeValue = "";
     Linker activityLinker = null;
-    TempAdapter mainDegreeAdapter;
-
 
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState) {
@@ -32,7 +29,7 @@ public class MainZipCodeAdapter extends  DialogFragment{
 
     private AlertDialog zipCodeDialog(){
 
-        inflater = getActivity().getLayoutInflater();
+        LayoutInflater inflater = getActivity().getLayoutInflater();
         View  zipView = inflater.inflate(R.layout.zip_text,null);
 
         AlertDialog.Builder alertDialZip = new AlertDialog.Builder(getActivity());
@@ -49,7 +46,7 @@ public class MainZipCodeAdapter extends  DialogFragment{
 
                         activityLinker.setZipValue(zipCodeValue);
 
-                        mainDegreeAdapter = new TempAdapter();
+                        TempAdapter mainDegreeAdapter = new TempAdapter();
                         mainDegreeAdapter.show(getFragmentManager(),"degreeDialog");
 
                     }

@@ -14,10 +14,8 @@ import com.foo.umbrella.R;
 public class ZipCodeAdapter extends DialogFragment{
 
     private EditText zipCode;
-    LayoutInflater inflater;
     String zipCodeValue = "";
     Linker activityLinker = null;
-    TempAdapter mainDegreeAdapter;
 
 
     @Override
@@ -31,7 +29,7 @@ public class ZipCodeAdapter extends DialogFragment{
 
     private AlertDialog zipCodeDialog(){
 
-        inflater = getActivity().getLayoutInflater();
+        LayoutInflater inflater = getActivity().getLayoutInflater();
         View zipView = inflater.inflate(R.layout.zip_text,null);
 
         AlertDialog.Builder alertDialZip = new AlertDialog.Builder(getActivity());

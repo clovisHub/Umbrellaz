@@ -19,8 +19,8 @@ import com.foo.umbrella.ui.settings.SettingsActivity;
 public class CodeActivity extends AppCompatActivity implements CodeContract.View{
 
     CodeContract.Presenter presenter;
-
     TextView secView;
+
     Toolbar toolbar;
 
     //String zip = "75243";
@@ -34,7 +34,8 @@ public class CodeActivity extends AppCompatActivity implements CodeContract.View
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_code);
-        secView = (TextView) findViewById(R.id.sec_tvId);
+
+        secView = (TextView) findViewById(R.id.code_txt1);
 
         toolbar = (Toolbar) findViewById(R.id.app_barId);
         setSupportActionBar(toolbar);
@@ -45,7 +46,6 @@ public class CodeActivity extends AppCompatActivity implements CodeContract.View
 
         if(zip.length() == 5){
 
-            secView.setText(zip);
             presenter = new CodePresenter(this);
             presenter.setZipCode(zip);
 
@@ -105,12 +105,12 @@ public class CodeActivity extends AppCompatActivity implements CodeContract.View
             toolbar.setSubtitle(Integer.toString((int)(Double.parseDouble(response.getCurrentObservation().getTempFahrenheit())))
                     +"\u00b0"+"F");
 
-            secView.setText(response.getCurrentObservation().getTempFahrenheit().toString()+"\u00b0"+"F");
+            //secView.setText(response.getCurrentObservation().getTempFahrenheit().toString()+"\u00b0"+"F");
         }
         else{
             toolbar.setSubtitle(Integer.toString((int)(Double.parseDouble(response.getCurrentObservation().getTempCelsius())))
                     +"\u00b0"+"C");
-            secView.setText(response.getCurrentObservation().getTempCelsius().toString()+"\u00b0"+"C");
+            //secView.setText(response.getCurrentObservation().getTempCelsius().toString()+"\u00b0"+"C");
         }
 
 
@@ -124,6 +124,39 @@ public class CodeActivity extends AppCompatActivity implements CodeContract.View
         else{
             toolbar.setBackgroundColor(getResources().getColor(R.color.weather_cool));
         }
+            //ListForCastcondition
+            int number = response.getForecast().size();
+            String displayed = "Response Size "+number+"\n\n\n";
+
+            displayed = displayed+ "hour"+ response.getForecast().get(0).getDateTime().getHour();
+            displayed = displayed+"\n"+"Celsius "+response.getForecast().get(0).getTempCelsius();
+            displayed = displayed+"\n"+"Fahrnheit "+ response.getForecast().get(0).getTempFahrenheit();
+            displayed = displayed+"\n"+"Condition "+response.getForecast().get(0).getCondition();
+            displayed = displayed+"\n"+"display time"+response.getForecast().get(0).getDisplayTime();
+            displayed = displayed+"\n"+"icon "+response.getForecast().get(0).getIcon();
+            displayed = displayed+"\n"+"time "+response.getForecast().get(0).getDateTime();
+            displayed = displayed+"\n"+"month "+response.getForecast().get(19).getDateTime().getDayOfMonth();
+            displayed = displayed+"\n"+"week "+response.getForecast().get(19).getDateTime().getDayOfWeek();
+                          // displayed = displayed+"\n\n\n";
+           // displayed = displayed+"\n"+"Celsius "+response.getForecast().get(1).getTempCelsius();
+           // displayed = displayed+"\n"+"Fahrnheit "+ response.getForecast().get(1).getTempFahrenheit();
+           // displayed = displayed+"\n"+"Condition "+response.getForecast().get(1).getCondition();
+           // displayed = displayed+"\n"+"display time"+response.getForecast().get(1).getDisplayTime();
+           // displayed = displayed+"\n"+"icon "+response.getForecast().get(1).getIcon();
+           // displayed = displayed+"\n"+"time "+response.getForecast().get(1).getDateTime();
+                           displayed = displayed+"\n\n\n";
+            displayed = displayed+ "hour"+ response.getForecast().get(0).getDateTime().getHour();
+            displayed = displayed+"\n"+"Celsius "+response.getForecast().get(19).getTempCelsius();
+            displayed = displayed+"\n"+"Fahrnheit "+ response.getForecast().get(19).getTempFahrenheit();
+            displayed = displayed+"\n"+"Condition "+response.getForecast().get(19).getCondition();
+            displayed = displayed+"\n"+"display time"+response.getForecast().get(19).getDisplayTime();
+            displayed = displayed+"\n"+"icon "+response.getForecast().get(19).getIcon();
+            displayed = displayed+"\n"+"time "+response.getForecast().get(19).getDateTime();
+            displayed = displayed+"\n"+ "day of Year"+ response.getForecast().get(0).getDateTime().getDayOfYear();
+            displayed = displayed+"\n"+ "day of month"+ response.getForecast().get(0).getDateTime().getDayOfMonth();
+            displayed = displayed+"\n"+"day of week"+ response.getForecast().get(0).getDateTime().getDayOfWeek();
+
+        secView.setText(displayed);
 
     }
 }
