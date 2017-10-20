@@ -4,22 +4,30 @@ import android.content.Intent;
 import android.os.PersistableBundle;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
-import android.widget.TextView;
 import android.widget.Toast;
-
 import com.foo.umbrella.R;
+import com.foo.umbrella.data.model.ForecastCondition;
 import com.foo.umbrella.data.model.WeatherData;
 import com.foo.umbrella.ui.settings.SettingsActivity;
+import java.util.ArrayList;
+import java.util.List;
 
 
 public class CodeActivity extends AppCompatActivity implements CodeContract.View{
 
     CodeContract.Presenter presenter;
-    TextView secView;
+    //TextView secView;
+    List<List<ForecastCondition>> allList;
+
+    RecyclerView codeRecyclerOut;
+    CodeRecOutAdapter recOutAdapter;
+
 
     Toolbar toolbar;
 
@@ -35,10 +43,18 @@ public class CodeActivity extends AppCompatActivity implements CodeContract.View
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_code);
 
-        secView = (TextView) findViewById(R.id.code_txt1);
-
         toolbar = (Toolbar) findViewById(R.id.app_barId);
         setSupportActionBar(toolbar);
+        allList= new ArrayList<>();
+
+
+        //secView = (TextView) findViewById(R.id.code_txt1);
+
+        //Recyclerview
+        codeRecyclerOut = (RecyclerView) findViewById(R.id.code_outer_rcViewId);
+        codeRecyclerOut.setLayoutManager(new LinearLayoutManager(CodeActivity.this,LinearLayoutManager.VERTICAL,false));
+        codeRecyclerOut.setHasFixedSize(true);
+
 
 
         zip = getIntent().getStringExtra("zip").trim();
@@ -95,8 +111,7 @@ public class CodeActivity extends AppCompatActivity implements CodeContract.View
     public void loadData(WeatherData response) {
 
         //TODO display data as shown in design and take care of rotation
-        // Display result view textView to see how it works
-        // Display result via textView to see how it works
+        //set Recyclerview
 
         toolbar.setTitle(response.getCurrentObservation().getDisplayLocation().getFullName().toString());
 
@@ -115,6 +130,7 @@ public class CodeActivity extends AppCompatActivity implements CodeContract.View
 
 
         if(Double.parseDouble(response.getCurrentObservation().getTempFahrenheit().toString()) > 60){
+
             toolbar.setBackgroundColor(getResources().getColor(R.color.weather_warm));
         }
         else if(Double.parseDouble(response.getCurrentObservation().getTempCelsius().toString()) > 16){
@@ -122,41 +138,35 @@ public class CodeActivity extends AppCompatActivity implements CodeContract.View
             toolbar.setBackgroundColor(getResources().getColor(R.color.weather_warm));
         }
         else{
+
             toolbar.setBackgroundColor(getResources().getColor(R.color.weather_cool));
         }
             //ListForCastcondition
-            int number = response.getForecast().size();
-            String displayed = "Response Size "+number+"\n\n\n";
 
-            displayed = displayed+ "hour"+ response.getForecast().get(0).getDateTime().getHour();
-            displayed = displayed+"\n"+"Celsius "+response.getForecast().get(0).getTempCelsius();
-            displayed = displayed+"\n"+"Fahrnheit "+ response.getForecast().get(0).getTempFahrenheit();
-            displayed = displayed+"\n"+"Condition "+response.getForecast().get(0).getCondition();
-            displayed = displayed+"\n"+"display time"+response.getForecast().get(0).getDisplayTime();
-            displayed = displayed+"\n"+"icon "+response.getForecast().get(0).getIcon();
-            displayed = displayed+"\n"+"time "+response.getForecast().get(0).getDateTime();
-            displayed = displayed+"\n"+"month "+response.getForecast().get(19).getDateTime().getDayOfMonth();
-            displayed = displayed+"\n"+"week "+response.getForecast().get(19).getDateTime().getDayOfWeek();
-                          // displayed = displayed+"\n\n\n";
-           // displayed = displayed+"\n"+"Celsius "+response.getForecast().get(1).getTempCelsius();
-           // displayed = displayed+"\n"+"Fahrnheit "+ response.getForecast().get(1).getTempFahrenheit();
-           // displayed = displayed+"\n"+"Condition "+response.getForecast().get(1).getCondition();
-           // displayed = displayed+"\n"+"display time"+response.getForecast().get(1).getDisplayTime();
-           // displayed = displayed+"\n"+"icon "+response.getForecast().get(1).getIcon();
-           // displayed = displayed+"\n"+"time "+response.getForecast().get(1).getDateTime();
-                           displayed = displayed+"\n\n\n";
-            displayed = displayed+ "hour"+ response.getForecast().get(0).getDateTime().getHour();
-            displayed = displayed+"\n"+"Celsius "+response.getForecast().get(19).getTempCelsius();
-            displayed = displayed+"\n"+"Fahrnheit "+ response.getForecast().get(19).getTempFahrenheit();
-            displayed = displayed+"\n"+"Condition "+response.getForecast().get(19).getCondition();
-            displayed = displayed+"\n"+"display time"+response.getForecast().get(19).getDisplayTime();
-            displayed = displayed+"\n"+"icon "+response.getForecast().get(19).getIcon();
-            displayed = displayed+"\n"+"time "+response.getForecast().get(19).getDateTime();
-            displayed = displayed+"\n"+ "day of Year"+ response.getForecast().get(0).getDateTime().getDayOfYear();
-            displayed = displayed+"\n"+ "day of month"+ response.getForecast().get(0).getDateTime().getDayOfMonth();
-            displayed = displayed+"\n"+"day of week"+ response.getForecast().get(0).getDateTime().getDayOfWeek();
+           List<ForecastCondition> mylist = new ArrayList<>();
+           List<ForecastCondition> mylist2 = new ArrayList<>();
 
-        secView.setText(displayed);
+
+
+           for(int i = 0; i< (response.getForecast().size()/3); i++){
+
+               mylist.add(response.getForecast().get(i));
+           }
+
+           for(int i = response.getForecast().size()-12; i< response.getForecast().size(); i++){
+
+               mylist2.add(response.getForecast().get(i));
+
+           }
+
+           allList.add(mylist);
+           allList.add(mylist2);
+
+
+           recOutAdapter = new CodeRecOutAdapter(getApplicationContext(),allList,degree);
+           codeRecyclerOut.setAdapter(recOutAdapter);
+
+
 
     }
 }

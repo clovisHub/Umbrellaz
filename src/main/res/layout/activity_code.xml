@@ -11,10 +11,10 @@
         android:id="@+id/app_barId"
         layout="@layout/app_bar"
         />
-    <TextView
+    <android.support.v7.widget.RecyclerView
         android:layout_below="@+id/app_barId"
-        android:id="@+id/code_txt1"
+        android:id="@+id/code_outer_rcViewId"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"></android.support.v7.widget.RecyclerView>
 
 </RelativeLayout>

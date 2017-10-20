@@ -1,25 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent" android:layout_height="match_parent">
+    android:orientation="vertical"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content">
     <TextView
-        android:id="@+id/tempId"
-        android:gravity="center"
-        android:layout_width="match_parent"
+        android:id="@+id/singleTempId"
+        android:layout_width="60dp"
         android:layout_height="wrap_content"
-        android:text="Temperature"/>
-    <ImageView
-        android:id="@+id/imageVid"
-        android:layout_below="@+id/tempId"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:src="@drawable/weather_fog"
-        android:contentDescription="@string/fog" />
-    <TextView
-        android:id="@+id/hourId"
-        android:gravity="center"
-        android:layout_below="@+id/imageVid"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="hours"/>
+        android:text="@string/temperature"/>
+
 
 </RelativeLayout>
