@@ -15,5 +15,6 @@
     <string name="fog">fog</string>
     <string name="temperature">Temperature</string>
     <string name="hours">hours</string>
+    <string name="icon">icon</string>
 
 </resources>

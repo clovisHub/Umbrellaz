@@ -57,7 +57,6 @@ public class CodeRecOutAdapter extends RecyclerView.Adapter<CodeRecOutAdapter.Ou
     @Override
     public void onBindViewHolder(CodeRecOutAdapter.OutViewHolder holder, int position) {
 
-
         List<ForecastCondition> one = new ArrayList<>(forecast.get(position));
         CodeRecInAdapter horizontalAdapter = new CodeRecInAdapter(one,unitChosen);
         horizontalAdapter.setRowIndex(position);
