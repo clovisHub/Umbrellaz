@@ -1,11 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">Umbrella</string>
     <string name="temp">Temperature</string>
     <string name="zip_code">Enter ZipCode</string>
     <string name="select_unit">Select unit</string>
     <string name="enter_zipcode">Enter zipcode</string>
-    <string name="fahrenheit">Fahrenheit</string>
-    <string name="celsius">Celsius</string>
+    <string name="fahrenheit">fahrenheit</string>
+    <string name="celsius">celsius</string>
     <string-array name="selected">
         <item>Fahrenheit</item>
         <item>Celsius</item>
@@ -19,6 +20,4 @@
     <string name="day">day</string>
     <string name="today">Today</string>
     <string name="tomorrow">Tomorrow</string>
-    <string name="to_code_activity">to code activity</string>
-
 </resources>

@@ -1,11 +1,13 @@
 package com.foo.umbrella.ui.code;
 
 import android.content.Context;
+import android.graphics.Paint;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import com.foo.umbrella.R;
 import com.foo.umbrella.data.model.ForecastCondition;
@@ -32,6 +34,7 @@ public class CodeRecOutAdapter extends RecyclerView.Adapter<CodeRecOutAdapter.Ou
     public static class OutViewHolder extends RecyclerView.ViewHolder {
 
         RecyclerView recyclerViewGridList;
+        TextView title;
 
 
         public OutViewHolder(View itemView) {
@@ -40,7 +43,7 @@ public class CodeRecOutAdapter extends RecyclerView.Adapter<CodeRecOutAdapter.Ou
             recyclerViewGridList = (RecyclerView) itemView.findViewById(R.id.code_inner_rcVid);
             recyclerViewGridList.setLayoutManager(new GridLayoutManager(context,4));
             recyclerViewGridList.setHasFixedSize(true);
-
+            title = (TextView) itemView.findViewById(R.id.card_titleId);
 
         }
     }
@@ -56,6 +59,13 @@ public class CodeRecOutAdapter extends RecyclerView.Adapter<CodeRecOutAdapter.Ou
 
     @Override
     public void onBindViewHolder(CodeRecOutAdapter.OutViewHolder holder, int position) {
+
+        if(position == 0){
+            holder.title.setText(R.string.today);
+        }
+        else{
+            holder.title.setText(R.string.tomorrow);
+        }
 
         List<ForecastCondition> one = new ArrayList<>(forecast.get(position));
         CodeRecInAdapter horizontalAdapter = new CodeRecInAdapter(one,unitChosen);

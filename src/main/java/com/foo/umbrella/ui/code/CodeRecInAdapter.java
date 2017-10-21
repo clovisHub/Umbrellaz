@@ -22,13 +22,11 @@ public class CodeRecInAdapter extends RecyclerView.Adapter<CodeRecInAdapter.Item
 
     static final String TAG = CodeRecInAdapter.class.getName().concat("_TAG");
 
-
     public CodeRecInAdapter(List<ForecastCondition> currentList, String option){
 
         if(forecast!= currentList){
             forecast = currentList;
             chosenUnit = option;
-
         }
 
     }
@@ -77,7 +75,14 @@ public class CodeRecInAdapter extends RecyclerView.Adapter<CodeRecInAdapter.Item
                 holder.textViewTemp.setText(forecast.get(position).getTempCelsius()+"\u00b0"+"C");
             }
 
-            holder.textViewHour.setText(""+forecast.get(position).getDateTime().getHour());
+            if(forecast.get(position).getDateTime().getHour()>12){
+
+                holder.textViewHour.setText((forecast.get(position).getDateTime().getHour()-12)+" pm");
+
+            }else{
+                holder.textViewHour.setText("" + forecast.get(position).getDateTime().getHour()+" am");
+            }
+
 
             holder.imageView.setImageResource(setImageCell(forecast.get(position)));
            // holder.imageView.setImageResource();

@@ -44,7 +44,13 @@ public class ZipCodeAdapter extends DialogFragment{
 
                         zipCodeValue = zipCode.getText().toString();
 
-                        activityLinker.setZipValue(zipCodeValue);
+                        if(!(zipCodeValue.equals("")|| zipCodeValue == null)){
+                            activityLinker.setZipValue(zipCodeValue);
+                        }
+                        else{
+                            //do nothing
+                        }
+
                     }
                 });
 

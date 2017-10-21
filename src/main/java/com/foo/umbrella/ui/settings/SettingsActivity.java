@@ -3,6 +3,7 @@ package com.foo.umbrella.ui.settings;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -13,6 +14,7 @@ import com.foo.umbrella.R;
 import com.foo.umbrella.ui.Linker;
 import com.foo.umbrella.ui.ZipCodeAdapter;
 import com.foo.umbrella.ui.TempAdapter;
+import com.foo.umbrella.ui.code.CodeActivity;
 
 import java.util.Arrays;
 
@@ -23,12 +25,20 @@ public class SettingsActivity extends AppCompatActivity implements View.OnClickL
     String zip, temp;
     ZipCodeAdapter zipCodeAdapter;
     TempAdapter mainDegreeAdapter;
+    Toolbar toolbar;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_settings);
+
+        toolbar = (Toolbar) findViewById(R.id.app_bar_setId);
+        setSupportActionBar(toolbar);
+
+        getSupportActionBar().setHomeButtonEnabled(true);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
 
         setsTv1 = (TextView) findViewById(R.id.set_txtId1);
         setsTv2 = (TextView) findViewById(R.id.set_txtId2);
@@ -44,6 +54,7 @@ public class SettingsActivity extends AppCompatActivity implements View.OnClickL
         tbRow1.setOnClickListener(this);
         tbRow2.setOnClickListener(this);
     }
+
 
     @Override
     protected void onSaveInstanceState(Bundle outState) {
@@ -66,6 +77,7 @@ public class SettingsActivity extends AppCompatActivity implements View.OnClickL
 
         String [] buildTemp ={"Unit","\n\n",deg};
         setsTv2.setText(Arrays.toString(buildTemp).replaceAll("\\[|\\]", "").replaceAll(",",""));
+
     }
 
     private void setUpZipCode(String zip){
@@ -79,7 +91,6 @@ public class SettingsActivity extends AppCompatActivity implements View.OnClickL
 
         MenuInflater menuInflater = getMenuInflater();
         menuInflater.inflate(R.menu.menu_setting,menu);
-
         return true;
     }
 
@@ -87,8 +98,13 @@ public class SettingsActivity extends AppCompatActivity implements View.OnClickL
     public boolean onOptionsItemSelected(MenuItem item) {
         int itemResId = item.getItemId();
 
-        if(itemResId == R.id.arrow_SubmitId){
+        if(itemResId == android.R.id.home){
             // set a new layout,
+            Intent goToCode = new Intent(this, CodeActivity.class);
+            goToCode.putExtra("toolbar","create");
+            goToCode.putExtra("degree",temp);
+            goToCode.putExtra("zip",zip);
+            startActivity(goToCode);
         }
         return super.onOptionsItemSelected(item);
     }

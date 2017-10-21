@@ -44,10 +44,18 @@ public class MainZipCodeAdapter extends  DialogFragment{
 
                         zipCodeValue = zipCode.getText().toString();
 
-                        activityLinker.setZipValue(zipCodeValue);
+                        if(!(zipCodeValue.equals("")|| zipCodeValue == null)){
 
-                        TempAdapter mainDegreeAdapter = new TempAdapter();
-                        mainDegreeAdapter.show(getFragmentManager(),"degreeDialog");
+                            activityLinker.setZipValue(zipCodeValue);
+
+                            TempAdapter mainDegreeAdapter = new TempAdapter();
+                            mainDegreeAdapter.show(getFragmentManager(),"degreeDialog");
+                        }
+                        else {
+                            //do nothing
+
+
+                        }
 
                     }
                 });

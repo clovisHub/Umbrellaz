@@ -72,6 +72,14 @@ public class CodeActivity extends AppCompatActivity implements CodeContract.View
 
     }
 
+
+    @Override
+    protected void onRestart() {
+        super.onRestart();
+        zip = getIntent().getStringExtra("zip").trim();
+        degree = getIntent().getStringExtra("degree").trim();
+    }
+
     @Override
     public void onSaveInstanceState(Bundle outState, PersistableBundle outPersistentState) {
         super.onSaveInstanceState(outState, outPersistentState);
@@ -146,14 +154,22 @@ public class CodeActivity extends AppCompatActivity implements CodeContract.View
            List<ForecastCondition> mylist = new ArrayList<>();
            List<ForecastCondition> mylist2 = new ArrayList<>();
 
+           int actualHour = response.getForecast().get(0).getDateTime().getHour();
+           int beforeMidnight = 24 -actualHour;
 
+           // Today list start from actual hour to 11 pm
+           int limitToshow = 12;
+           if(beforeMidnight <= limitToshow){
+               limitToshow = beforeMidnight;
+           }
 
-           for(int i = 0; i< (response.getForecast().size()/3); i++){
+           for(int i = 0; i< limitToshow; i++){
 
                mylist.add(response.getForecast().get(i));
            }
 
-           for(int i = response.getForecast().size()-12; i< response.getForecast().size(); i++){
+           // tomorrow list starts from midnight and go to end.
+           for(int i = beforeMidnight; i< beforeMidnight+12; i++){
 
                mylist2.add(response.getForecast().get(i));
 

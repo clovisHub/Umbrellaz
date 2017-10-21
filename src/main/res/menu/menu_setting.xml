@@ -1,11 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:umbrellas="http://schemas.android.com/apk/res-auto">
-
     <item
         android:id="@+id/arrow_SubmitId"
         android:icon="@drawable/ic_action_arrow"
-        android:title=""
+        android:title="@string/to_code_activity"
         umbrellas:showAsAction="ifRoom"/>
 
 </menu>
