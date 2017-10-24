@@ -8,6 +8,8 @@ import android.support.v7.app.AlertDialog;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.Toast;
+
 import com.foo.umbrella.R;
 import com.foo.umbrella.ui.TempAdapter;
 import com.foo.umbrella.ui.Linker;
@@ -27,7 +29,7 @@ public class MainZipCodeAdapter extends  DialogFragment{
     }
 
 
-    private AlertDialog zipCodeDialog(){
+    private Dialog zipCodeDialog(){
 
         LayoutInflater inflater = getActivity().getLayoutInflater();
         View  zipView = inflater.inflate(R.layout.zip_text,null);
@@ -40,27 +42,38 @@ public class MainZipCodeAdapter extends  DialogFragment{
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
 
-                        zipCode = (EditText) zipView.findViewById(R.id.edit_zipId);
 
-                        zipCodeValue = zipCode.getText().toString();
-
-                        if(!(zipCodeValue.equals("")|| zipCodeValue == null)){
-
-                            activityLinker.setZipValue(zipCodeValue);
-
-                            TempAdapter mainDegreeAdapter = new TempAdapter();
-                            mainDegreeAdapter.show(getFragmentManager(),"degreeDialog");
-                        }
-                        else {
-                            //do nothing
-
-
-                        }
 
                     }
                 });
 
-        return alertDialZip.create();
+        AlertDialog dialog = alertDialZip.create();
+        dialog.show();
+        dialog.getButton(AlertDialog.BUTTON_POSITIVE).setOnClickListener(new View.OnClickListener(){
+
+            @Override
+            public void onClick(View v) {
+                zipCode = (EditText) zipView.findViewById(R.id.edit_zipId);
+
+                zipCodeValue = zipCode.getText().toString();
+
+                if((!(zipCodeValue.equals("")|| zipCodeValue == null))&& zipCodeValue.length()== 5){
+
+                    activityLinker.setZipValue(zipCodeValue);
+                    dialog.dismiss();
+
+                    TempAdapter mainDegreeAdapter = new TempAdapter();
+                    mainDegreeAdapter.show(getFragmentManager(),"degreeDialog");
+                }
+                else {
+                    //do nothing
+                    Toast.makeText(zipView.getContext(),"Enter a valid zipcode",Toast.LENGTH_LONG).show();
+                }
+
+            }
+        });
+
+        return dialog;
     }
 
     public String getZipCodeValue(){
